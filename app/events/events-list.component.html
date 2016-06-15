@@ -1,0 +1,63 @@
+<div class="panel">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="form-inline">
+          <div class="form-group">
+            <input type="text" placeholder="City" class="form-control" [(ngModel)]="_city" />
+            <button (click)="getEventsForCity()" class="btn">go!</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-4 col-xs-offset-4">
+        <div class="form-group">
+          <input type="text" placeholder="filter by..." class="form-control" [(ngModel)]="listFilter" />
+        </div>
+      </div>
+    </div>
+    <h4 *ngIf="_message" class="text-warning">{{_message}}</h4>
+    <div class="table-responsive" *ngIf="events && events.length">
+      <h4>{{_city}} Events</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Event</th>
+            <th>Info</th>
+            <th style="min-width: 100px">When</th>
+            <th>Where</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="#event of events | eventFilter:listFilter">
+            <td><img src="{{event.image ? (event.image.medium ? event.image.medium.url : '') : ''}}" />
+            </td>
+            <td>
+              <a href={{event.url}} target="_blank">
+                {{event.title}}
+              </a>
+            </td>
+            <td [innerHTML]="event.description | truncate:200"></td>
+            <td>{{event.start_time}}</td>
+            <td>
+              <a href={{event.venue_url}} target="_blank">
+                {{event.venue_name}}
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 text-left">
+        <a class='btn btn-default text-left' (click)='onPageFirst()'><i class='glyphicon glyphicon-step-backward'></i></a>
+        <a class='btn btn-default text-left' (click)='onPageMinus()'><i class='glyphicon glyphicon-chevron-left'></i></a>
+      </div>
+      <div class="col-xs-4 text-center">{{_page}}</div>
+      <div class="col-xs-4 text-right">
+        <a class='btn btn-default text-right' (click)='onPagePlus()'><i class='glyphicon glyphicon-chevron-right'></i></a>
+        <a class='btn btn-default text-right' (click)='onPageLast()'><i class='glyphicon glyphicon-step-forward'></i></a>
+      </div>
+    </div>
+  </div>
+</div>

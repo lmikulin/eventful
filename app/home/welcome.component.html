@@ -1,0 +1,13 @@
+<div class="panel">
+  <div class="panel-body">
+    <div class="col-xs-12 col-sm-6">
+      <div class="form-group">
+        <label>Search For Events in:
+          <input type="text" class="form-control" placeholder="City" [(ngModel)]="city"/>
+        </label>
+        <button (click)="searchCity()" class="btn">Seach</button>
+        <br/><span class="text-danger">{{message}}</span>
+      </div>
+    </div>
+  </div>
+</div>
