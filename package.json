@@ -1,8 +1,8 @@
 {
-    "name": "product-management",
+    "name": "eventful",
     "version": "1.0.0",
-    "author": "Deborah Kurata",
-    "description": "Package for the Acme Product Management sample application",
+    "author": "Liana Mikulin",
+    "description": "Get events for cities using the Eventful api",
     "scripts": {
         "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
         "tsc": "tsc",
